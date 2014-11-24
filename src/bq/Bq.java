@@ -59,9 +59,12 @@ class InArray {
 
     public InArray() {
         Random rnd = new Random();
-        for (int i = 0; i < arrLenght; i++) {
-            inputArr[i] = rnd.nextInt(1000);
+        int sum = 0;
+        for (int i = 0; i < arrLenght; i++) {            
+            inputArr[i] = rnd.nextInt(100);
+            sum = sum+inputArr[i];
         }
+        System.out.println(sum);
     }
 
     public int getInt() throws InterruptedException {
@@ -86,15 +89,16 @@ class OutArray {
     int index = 0;
     int arrLenght = 10;
     int[] inputArr = new int[arrLenght];
-
+    int sum = 0;
     public void putInt(int num) {
         synchronized (this) {
             inputArr[index++] = num;
+            sum = sum+num;
         }
     }
 
     void print() {
-        System.out.println(Arrays.toString(inputArr));
+        System.out.println(sum);
     }
 }
 
